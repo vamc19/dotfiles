@@ -33,11 +33,7 @@ alias wget='wget -c'
 alias op='kde-open'
 alias py='python'
 alias open='kde-open'
-alias code='cd /home/vamc/Code'
-alias src='cd /home/vamc/src'
 alias ..='cd ../'
-alias blog='cd /home/vamc/Documents/blog'
-alias website='cd /home/vamc/src/website'
 
 alias nn='nano'
 # ex - archive extractor
@@ -100,4 +96,4 @@ function _unmark {
     COMPREPLY=($(compgen -W '${marks[@]}' -- "$cur"))
     return 0
 }
-  complete -o default -o nospace -F _unmark unmark
+complete -o default -o nospace -F _unmark unmark
