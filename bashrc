@@ -97,3 +97,6 @@ function _unmark {
     return 0
 }
 complete -o default -o nospace -F _unmark unmark
+
+export GROOVY_HOME="$HOME/src/groovy-2.1.6"
+export PATH=$PATH:$GROOVY_HOME/bin
