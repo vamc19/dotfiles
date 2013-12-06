@@ -70,7 +70,7 @@ alias aptupgrade='sudo apt-get upgrade'
 alias aptupdate='sudo apt-get update'
 
 # ax - archive extractor
-# usage: ex <file>
+# usage: ax <file>
 ax ()
 {
   if [ -f $1 ] ; then
@@ -86,7 +86,7 @@ ax ()
       *.zip)       unzip $1     ;;
       *.Z)         uncompress $1;;
       *.7z)        7z x $1      ;;
-      *)           echo "'$1' cannot be extracted via ex()" ;;
+      *)           echo "'$1' cannot be extracted via ax()" ;;
     esac
   else
     echo "'$1' is not a valid file"
