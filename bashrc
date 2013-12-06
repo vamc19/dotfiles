@@ -34,11 +34,13 @@ alias op='kde-open'
 alias py='python'
 alias open='kde-open'
 alias ..='cd ../'
+alias mongod='$HOME/src/mongodb/bin/mongod'
+alias mongo='$HOME/src/mongodb/bin/mongo'
 
 alias nn='nano'
-# ex - archive extractor
+# ax - archive extractor
 # usage: ex <file>
-ex ()
+ax ()
 {
   if [ -f $1 ] ; then
     case $1 in
@@ -100,3 +102,5 @@ complete -o default -o nospace -F _unmark unmark
 
 export GROOVY_HOME="$HOME/src/groovy-2.1.6"
 export PATH=$PATH:$GROOVY_HOME/bin
+export JAVA_HOME="$HOME/src/java"
+export PATH=$PATH:$JAVA_HOME/bin
