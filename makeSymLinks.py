@@ -1,6 +1,6 @@
 import os
 
-restricted_files = ["makeSymLinks.py", ".directory", ".git", ".gitignore"]
+restricted_files = ["makeSymLinks.py", ".directory", ".git", ".gitignore", ".gitmodules"]
 
 file_names = [f for f in os.listdir(".") if f not in restricted_files]
 

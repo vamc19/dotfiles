@@ -6,7 +6,7 @@ ZSH=$HOME/.oh-my-zsh
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 #ZSH_THEME="robbyrussell"
-ZSH_THEME="arrow"
+ZSH_THEME="varrow"
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
@@ -98,3 +98,5 @@ source /etc/bash_completion.d/virtualenvwrapper
 export WORKON_HOME=~/python_envs
 
 setopt APPEND_HISTORY
+
+source ~/ros_catkin/install_isolated/setup.zsh
