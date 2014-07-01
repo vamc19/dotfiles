@@ -65,9 +65,9 @@ export PATH=$PATH:$GROOVY_HOME/bin
 export JAVA_HOME="$HOME/src/java"
 export PATH=$PATH:$JAVA_HOME/bin
 
-alias aptinstall='sudo apt-get install'
-alias aptupgrade='sudo apt-get upgrade'
-alias aptupdate='sudo apt-get update'
+alias agi='sudo apt-get install'
+alias agug='sudo apt-get upgrade'
+alias agud='sudo apt-get update'
 
 # ax - archive extractor
 # usage: ax <file>
@@ -94,8 +94,8 @@ ax ()
 }
 
 #VirtualenvWrapper specific
-source /etc/bash_completion.d/virtualenvwrapper
-export WORKON_HOME=~/python_envs
+#source /etc/bash_completion.d/virtualenvwrapper
+#export WORKON_HOME=~/python_envs
 
 setopt APPEND_HISTORY
 
