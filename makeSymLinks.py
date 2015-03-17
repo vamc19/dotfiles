@@ -2,9 +2,9 @@ import os
 
 restricted_files = ["makeSymLinks.py", ".directory", ".git", ".gitignore", ".gitmodules"]
 
-file_names = [f for f in os.listdir(".") if f not in restricted_files]
-
-for file_name in file_names:
+for file_name in os.listdir("."):
+    if file_name in restricted_files:
+        continue
     destination_path = os.path.join(os.getenv("HOME"), "."+file_name)
     source_path = os.path.realpath(file_name)
     if os.path.exists(destination_path):
