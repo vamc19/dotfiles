@@ -6,7 +6,8 @@ ZSH=$HOME/.oh-my-zsh
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 #ZSH_THEME="robbyrussell"
-ZSH_THEME="varrow"
+#ZSH_THEME="varrow"
+ZSH_THEME="vsorin"
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
@@ -16,7 +17,7 @@ ZSH_THEME="varrow"
 # CASE_SENSITIVE="true"
 
 # Uncomment this to disable bi-weekly auto-update checks
-# DISABLE_AUTO_UPDATE="true"
+DISABLE_AUTO_UPDATE="true"
 
 # Uncomment to change how often before auto-updates occur? (in days)
 # export UPDATE_ZSH_DAYS=13
@@ -41,7 +42,7 @@ ZSH_THEME="varrow"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git autojump lst-working-dir)
+plugins=(git autojump command-not-found python jump)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -53,21 +54,20 @@ alias vs='vim SPLITBUILD'
 alias wget='wget -c'
 alias op='kde-open'
 alias py='python'
-alias open='kde-open'
-alias ..='cd ../'
-alias mongod='$HOME/src/mongodb/bin/mongod'
-alias mongo='$HOME/src/mongodb/bin/mongo'
+alias py3='python3'
+alias open='xdg-open'
+alias t='tree -C --dirsfirst'
 
 export PYTHONSTARTUP="$HOME/.pyrc"
-
-export GROOVY_HOME="$HOME/src/groovy-2.1.6"
-export PATH=$PATH:$GROOVY_HOME/bin
-export JAVA_HOME="$HOME/src/java"
-export PATH=$PATH:$JAVA_HOME/bin
 
 alias agi='sudo apt-get install'
 alias agug='sudo apt-get upgrade'
 alias agud='sudo apt-get update'
+alias acs='apt-cache search'
+alias agr='sudo apt-get remove'
+alias agp='sudo apt-get purge'
+
+alias j='jump'
 
 # ax - archive extractor
 # usage: ax <file>
@@ -97,6 +97,9 @@ ax ()
 #source /etc/bash_completion.d/virtualenvwrapper
 #export WORKON_HOME=~/python_envs
 
-setopt APPEND_HISTORY
+setopt append_history no_inc_append_history no_share_history
 
-source ~/ros_catkin/install_isolated/setup.zsh
+#source ~/ros_catkin/install_isolated/setup.zsh
+#source /opt/ros/indigo/setup.zsh
+
+export ANDROID_HOME='/home/vamc/src/android-sdk-linux/'
