@@ -42,30 +42,31 @@ COMPLETION_WAITING_DOTS="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git autojump command-not-found python jump)
+plugins=(git command-not-found python jump archlinux)
 
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
 
 alias free='free -m'                      # show sizes in MB
+alias vi='vim'
 alias vp='vim PKGBUILD'
 alias vs='vim SPLITBUILD'
 alias wget='wget -c'
-alias op='kde-open'
 alias py='python'
-alias py3='python3'
+alias py2='python2'
 alias open='xdg-open'
 alias t='tree -C --dirsfirst'
 
 export PYTHONSTARTUP="$HOME/.pyrc"
+export VISUAL="vim"
 
-alias agi='sudo apt-get install'
-alias agug='sudo apt-get upgrade'
-alias agud='sudo apt-get update'
-alias acs='apt-cache search'
-alias agr='sudo apt-get remove'
-alias agp='sudo apt-get purge'
+# alias agi='sudo apt-get install'
+# alias agug='sudo apt-get upgrade'
+# alias agud='sudo apt-get update'
+# alias acs='apt-cache search'
+# alias agr='sudo apt-get remove'
+# alias agp='sudo apt-get purge'
 
 alias j='jump'
 
@@ -77,6 +78,7 @@ ax ()
     case $1 in
       *.tar.bz2)   tar xjf $1   ;;
       *.tar.gz)    tar xzf $1   ;;
+	  *.tar.xz)    tar kxJf $1  ;;
       *.bz2)       bunzip2 $1   ;;
       *.rar)       unrar x $1     ;;
       *.gz)        gunzip $1    ;;
