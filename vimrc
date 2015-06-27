@@ -17,4 +17,6 @@ filetype plugin indent on    " enable loading indent file for filetype
 
 set nu
 :highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
-set ts=4
+set expandtab
+set shiftwidth=4
+set tabstop=4
