@@ -22,44 +22,10 @@ let g:airline_powerline_fonts = 1
 set encoding=utf-8
 let g:airline#extensions#tabline#enabled = 1
 
-"---------------------------- Fugitive -----------------------------------
-" Git Plugin
-Plugin 'tpope/vim-fugitive'
-
 "---------------------------- NerdTree -----------------------------------
 " File browser
 Plugin 'scrooloose/nerdtree'
 map <F2> :NERDTreeToggle<CR>
-
-"---------------------------- Python Mode --------------------------------
-"Plugin 'klen/python-mode'
-"let g:pymode_rope = 0               " Disable rope. Use Jedi-vim instead
-
-" Linting
-"let g:pymode_lint = 1
-"let g:pymode_lint_checker = "pyflakes,pep8"
-"let g:pymode_lint_write = 1         " Auto check on save
-
-" Support virtualenv
-"let g:pymode_virtualenv = 1
-
-" Enable breakpoints plugin
-"let g:pymode_breakpoint = 1
-"let g:pymode_breakpoint_bind = '<leader>b'
-
-" syntax highlighting
-"let g:pymode_syntax = 1
-"let g:pymode_syntax_all = 1
-"let g:pymode_syntax_indent_errors = g:pymode_syntax_all
-"let g:pymode_syntax_space_errors = g:pymode_syntax_all
-
-" Don't autofold code
-"let g:pymode_folding = 0
-
-"---------------------------- Jedi-Vim -----------------------------------
-Plugin 'davidhalter/jedi-vim'
-" let g:jedi#use_tabs_not_buffers = 1
-let g:jedi#use_splits_not_buffers = "right"
 
 "----------------------------- CtrlP -------------------------------------
 Plugin 'kien/ctrlp.vim'
@@ -69,17 +35,6 @@ let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 
 "---------------------- Molokayo Color Scheme ----------------------------
 Plugin 'tomasr/molokai'
-Plugin 'fmoralesc/molokayo'
-Plugin 'freeo/vim-kalisi'
-
-Plugin 'jiangmiao/auto-pairs'
-
-Plugin 'MarcWeber/vim-addon-mw-utils'
-Plugin 'tomtom/tlib_vim'
-Plugin 'garbas/vim-snipmate'
-Plugin 'honza/vim-snippets'
-
-" Plugin 'weynhamz/vim-plugin-minibufexpl'
 
 call vundle#end()            " required
 
@@ -136,9 +91,3 @@ augroup vimrc_autocmds
     augroup END
 
 colorscheme molokai
-" :botright vertical pedit previewwindow
-
-" more subtle popup colors 
-"if has ('gui_running')
-"     highlight Pmenu guibg=#cccccc gui=bold    
-"     endif
