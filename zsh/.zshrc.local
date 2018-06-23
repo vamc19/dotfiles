@@ -23,43 +23,32 @@ alias py2='python2'
 alias open='xdg-open'
 alias t='tree -C --dirsfirst'
 alias j='jump'
+alias ax='simple-extract'
 
-# debian specific
-alias apt-install='sudo apt-get install'
-alias apt-remove='sudo apt-get remove'
-alias apt-update='sudo apt-get update'
-alias apt-upgrade='sudo apt-get upgrade'
+alias myip='ip -o addr | awk '\''{print $2 "\t"  $3 "\t" $4}'\'''
 
-source /etc/bash_completion.d/virtualenvwrapper
+ls_options+=( -h )
+
+# source /etc/bash_completion.d/virtualenvwrapper
 export PYTHONSTARTUP="$HOME/.pyrc"
 export VISUAL="vim"
 
+export JAVA_HOME=/usr/lib/jvm/java-8-openjdk
+export PATH=$PATH:$JAVA_HOME
+
+export FLUTTER_HOME=$HOME/opt/flutter
+export PATH=$PATH:$FLUTTER_HOME/bin
+
+export GOPATH=$HOME
+export PATH=$PATH:$HOME/bin
+
+export ANDROID_SDK_ROOT=$HOME/opt/android-sdk
+export PATH=$PATH:$ANDROID_SDK_ROOT/emulator:$ANDROID_SDK_ROOT/tools:$ANDROID_SDK_ROOT/platform-tools
+
 alias tmux="TERM=screen-256color-bce tmux"
 
-# ax - archive extractor
-# usage: ax <file>
-ax () {
-  if [ -f $1 ] ; then
-    case $1 in
-      *.tar.bz2)   tar xjf $1   ;;
-      *.tar.gz)    tar xzf $1   ;;
-      *.bz2)       bunzip2 $1   ;;
-      *.rar)       unrar x $1   ;;
-      *.gz)        gunzip $1    ;;
-      *.tar)       tar xf $1    ;;
-      *.tbz2)      tar xjf $1   ;;
-      *.tgz)       tar xzf $1   ;;
-      *.zip)       unzip $1     ;;
-      *.Z)         uncompress $1;;
-      *.7z)        7z x $1      ;;
-      *)           echo "'$1' cannot be extracted via ax()" ;;
-    esac
-  else
-    echo "'$1' is not a valid file"
-  fi
-}
-
-#Mark-Unmark-Jump by http://jeroenjanssens.com/2013/08/16/quickly-navigate-your-filesystem-from-the-command-line.html 
+## Mark-Unmark-Jump 
+## http://jeroenjanssens.com/2013/08/16/quickly-navigate-your-filesystem-from-the-command-line.html 
 export MARKPATH=$HOME/.marks/
 function jump { 
     cd -P $MARKPATH/$1 2>/dev/null || echo "No such mark: $1"
@@ -73,20 +62,22 @@ function unmark {
 function marks {
     ls -l $MARKPATH | sed 's/  / /g' | cut -d' ' -f9- | sed 's/ -/\t-/g' && echo
 }
-function _jump {
-    local cur=${COMP_WORDS[COMP_CWORD]}
-    local marks=$(find $MARKPATH -type l -printf "%f\n")
-    COMPREPLY=($(compgen -W '${marks[@]}' -- "$cur"))
-    return 0
+function _compmarks {
+    reply=($(ls $MARKPATH))
 }
-grmlcomp -o default -o nospace -F _jump jump
-function _unmark {
-    local cur=${COMP_WORDS[COMP_CWORD]}
-    local marks=$(find $MARKPATH -type l -printf "%f\n")
-    COMPREPLY=($(compgen -W '${marks[@]}' -- "$cur"))
-    return 0
+compctl -K _compmarks jump
+compctl -K _compmarks unmark
+
+## Auto-start tmux
+function start_tmux() {
+    if type tmux &> /dev/null; then
+        #if not inside a tmux session, and if no session is started, start a new session
+        if [[ $HOST == "Shockwave" && -z "$TMUX" && -z $TERMINAL_CONTEXT  ]]; then
+            (tmux -2 attach || tmux -2 new-session)
+        fi
+    fi
 }
-grmlcomp -o default -o nospace -F _unmark unmark
+start_tmux
 
 ## Inform users about upgrade path for grml's old zshrc layout, assuming that:
 ## /etc/skel/.zshrc was installed as ~/.zshrc,
@@ -187,7 +178,7 @@ zstyle ':prompt:grml:left:setup' items rc virtual-env change-root path vcs perce
 #setopt nocheckjobs
 
 ## alert me if something failed
-#setopt printexitvalue
+setopt printexitvalue
 
 ## with spelling correction, assume dvorak kb
 #setopt dvorak
@@ -356,7 +347,7 @@ zstyle ':prompt:grml:left:setup' items rc virtual-env change-root path vcs perce
 #memusage() {
 #    ps aux | awk '{if (NR > 1) print $5;
 #                   if (NR > 2) print "+"}
-#                   END { print "p" }' | dc
+#                  END { print "p" }' | dc
 #}
 
 ## print hex value of a number
