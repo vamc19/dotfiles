@@ -91,3 +91,4 @@ augroup vimrc_autocmds
     augroup END
 
 colorscheme molokai
+hi MatchParen ctermfg=208 ctermbg=233 cterm=bold
