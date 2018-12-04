@@ -49,7 +49,7 @@ alias tmux="TERM=screen-256color-bce tmux"
 
 ## Mark-Unmark-Jump 
 ## http://jeroenjanssens.com/2013/08/16/quickly-navigate-your-filesystem-from-the-command-line.html 
-export MARKPATH=$HOME/.marks/
+export MARKPATH=$HOME/.marks
 function jump { 
     cd -P $MARKPATH/$1 2>/dev/null || echo "No such mark: $1"
 }
@@ -72,7 +72,7 @@ compctl -K _compmarks unmark
 function start_tmux() {
     if type tmux &> /dev/null; then
         #if not inside a tmux session, and if no session is started, start a new session
-        if [[ $HOST == "Shockwave" && -z "$TMUX" && -z $TERMINAL_CONTEXT  ]]; then
+        if [[ $TMUX_AUTO == true && -z "$TMUX" && -z $TERMINAL_CONTEXT  ]]; then
             (tmux -2 attach || tmux -2 new-session)
         fi
     fi
