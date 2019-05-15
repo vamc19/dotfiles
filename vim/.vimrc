@@ -33,15 +33,12 @@ let g:ctrlp_working_path_mode='ra'
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 
-"---------------------- Molokayo Color Scheme ----------------------------
-Plugin 'tomasr/molokai'
+Plugin 'tomasr/molokai'             " Molokai Color scheme
+Plugin 'fatih/vim-go'               " vim-go plugin
 
-call vundle#end()            " required
+call vundle#end()                   " required
 
 set completeopt-=preview
-
-set foldmethod=indent
-set foldlevel=99
 
 map <c-j> <c-w>j
 map <c-k> <c-w>k
@@ -59,19 +56,25 @@ filetype plugin indent on           " enable loading indent file for filetype
 
 set mouse=a
 
-set nu
-" highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
-set shiftround
-set expandtab
+set number                          " Display line number
 
-set clipboard=unnamed
+set tabstop=4                       " Number of spaces to insert for a Tab
+set shiftwidth=4                    " Number of spaces to insert for indentation
+set expandtab                       " New Tab characters will be changed to spaces
+set softtabstop=4                   " Delete correct number of spaces
+set shiftround
+
+" Vim on Arch does not come with +clipboard option. Install gvim.
+set clipboard=unnamedplus           " system clipboard integration
+
+" persistent
+set undodir=~/.vim/undodir
+set undofile
+set undolevels=1000
+set undoreload=10000
+
 
 set cursorline
-" hi CursorLine   cterm=NONE ctermbg=Blue
-" hi CursorColumn cterm=NONE ctermbg=Red
 
 set splitright                                          " Open splits to the right.
 set hlsearch                                            " Highlight search terms.
@@ -91,4 +94,6 @@ augroup vimrc_autocmds
     augroup END
 
 colorscheme molokai
+
 hi MatchParen ctermfg=208 ctermbg=233 cterm=bold
+hi LineNr term=bold cterm=bold ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey
