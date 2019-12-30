@@ -1,28 +1,21 @@
+autoload -U edit-command-line
+zle -N edit-command-line
+bindkey '^xe' edit-command-line
+bindkey '^x^e' edit-command-line
+
 alias free='free -m'
 alias vi='vim'
 alias wget='wget -c'
-alias open='xdg-open'
 alias t='tree -C --dirsfirst'
-alias j='jump'
 alias ax='simple-extract'
+alias g='git'
+alias lg='lazygit'
 
-alias myip='ip -o addr | awk '\''{print $2 "\t"  $3 "\t" $4}'\'''
-
-source /usr/bin/virtualenvwrapper_lazy.sh
-
-export PYTHONSTARTUP="$HOME/.pyrc"
 export VISUAL="vim"
-
-export GOPATH=$HOME
-export PATH=$PATH:$HOME/bin
-
-export ANDROID_SDK_ROOT=$HOME/opt/android-sdk
-export PATH=$PATH:$ANDROID_SDK_ROOT/emulator:$ANDROID_SDK_ROOT/tools:$ANDROID_SDK_ROOT/platform-tools
-
-alias tmux="TERM=screen-256color-bce tmux"
 
 ## Mark-Unmark-Jump 
 ## http://jeroenjanssens.com/2013/08/16/quickly-navigate-your-filesystem-from-the-command-line.html 
+alias j='jump'
 export MARKPATH=$HOME/.marks
 function jump { 
     cd -P $MARKPATH/$1 2>/dev/null || echo "No such mark: $1"
@@ -55,7 +48,7 @@ setopt printexitvalue
 ## changed completer settings
 zstyle ':completion:*' completer _complete _correct _approximate
 zstyle ':completion:*' expand prefix suffix
-
+     
 ## Find out which libs define a symbol
 lcheck() {
     if [[ -n "$1" ]] ; then
@@ -104,6 +97,7 @@ hex() {
 stty erase "^?"
 
 ## Auto-start tmux
+# Set TMUX_AUTO to true to auto start tmux
 function start_tmux() {
     if type tmux &> /dev/null; then
         #if not inside a tmux session, and if no session is started, start a new session
@@ -112,5 +106,15 @@ function start_tmux() {
         fi
     fi
 }
+
+## Load machine specific env variables and aliases
+DEFAULT_ENV=${HOME}/.zsh-env/linux.sh
+MACHINE_ENV=${HOME}/.zsh-env/$(hostname).sh
+if [[ -r $MACHINE_ENV ]]; then
+    source $MACHINE_ENV
+elif [[ -r $DEFAULT_ENV ]]; then
+    source $DEFAULT_ENV
+fi 
+
 start_tmux
 
