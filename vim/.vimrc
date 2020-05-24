@@ -33,8 +33,13 @@ let g:ctrlp_working_path_mode='ra'
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 
-Plugin 'tomasr/molokai'             " Molokai Color scheme
-Plugin 'fatih/vim-go'               " vim-go plugin
+Plugin 'fatih/molokai'             " Molokai Color scheme
+Plugin 'fatih/vim-go'              " vim-go plugin
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_function_calls = 1
+let g:go_highlight_operators = 1
 
 call vundle#end()                   " required
 

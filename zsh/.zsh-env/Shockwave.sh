@@ -1,5 +1,4 @@
 source $DEFAULT_ENV
-source /usr/bin/virtualenvwrapper_lazy.sh
 
 export PYTHONSTARTUP="$HOME/.pyrc"
 
